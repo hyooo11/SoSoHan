@@ -6,6 +6,8 @@
 /* font */
 /*root*/
 /*reset*/
+/*Header*/
+/* Login */
 
 /* font */
 @font-face {
@@ -164,6 +166,7 @@ figcaption {
 }
 
 .gloval-wrap {
+  position: relative;
   background-color: #f6f4f2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   min-height: 100vh;
@@ -177,7 +180,40 @@ figcaption {
   color: #7d898b;
 }
 
-/* 로그인 */
+/*Header*/
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+.Header .nav_btn_area {
+  display: flex;
+}
+.Header .nav_btn_area svg {
+  width: 2rem;
+  height: 2rem;
+}
+.Header .nav_btn {
+  z-index: 3;
+}
+.NavMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: #fff;
+  padding: 2rem 1rem 1rem 1rem;
+}
+.PostSearch {
+  /* position: absolute; */
+  /* top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2; */
+  background: #fff;
+}
+
+/* Login */
 .Login {
   position: absolute;
   top: 50%;

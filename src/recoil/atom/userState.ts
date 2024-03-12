@@ -32,7 +32,7 @@ export const loginHander = async (data: {
   username: string;
   password: string;
 }) => {
-  const response = await fetch("/api/account/login", {
+  const response = await fetch("/account/login", {
     headers: {
       "Content-Type": "application/json",
     },
