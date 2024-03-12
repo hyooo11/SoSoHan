@@ -1,0 +1,17 @@
+.PostCard .user_profile {
+  display: flex;
+  align-items: center;
+}
+.PostCard .user_profile figure {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50rem;
+  overflow: hidden;
+}
+.PostCard .user_profile figure img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,16 @@
+.PostListSwiper {
+  padding-bottom: 40px;
+}
+
+.PostListSwiper .swiper-slide figure {
+  position: relative;
+  padding-top: 46.33%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.PostListSwiper .swiper-slide figure img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

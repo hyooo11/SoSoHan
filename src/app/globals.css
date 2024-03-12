@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*****common******/
+/* font */
+/*root*/
+/*reset*/
+
+/* font */
+@font-face {
+  font-family: "copyduck";
+  src: url("/font/Copyduck.otf") format("opentype"); /* url경로는 public아래 경로를 적용 */
+  font-weight: normal;
+  font-style: normal;
+}
+/*root*/
+:root {
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/*reset*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 13px;
+  line-height: 1.4;
+  z-index: 1;
+  overflow: hidden;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #333;
+  text-align: left;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dd,
+dl,
+p {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Noto Sans";
+  font-weight: 400;
+}
+ul,
+ol,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table > caption {
+  position: unset;
+  text-indent: -100000px;
+  font-size: 0;
+}
+input,
+select,
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+img {
+  border-style: none;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+address {
+  font-style: normal;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+figure,
+figcaption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  word-break: keep-all;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #e2e2e2;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (min-width: 650px) {
+  .gloval-wrap {
+    width: 640px;
+  }
+}
+@media (max-width: 650px) {
+  .gloval-wrap {
+    width: 90vw;
+  }
+}
+
+.gloval-wrap {
+  background-color: #f6f4f2;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  min-height: 100vh;
+}
+.gloval-page {
+  padding: 0 1rem;
+}
+
+.logo {
+  font-family: "copyduck";
+  color: #7d898b;
+}
+
+/* 로그인 */
+.Login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Login .logo_area figure {
+  width: 70%;
+  margin: 0 auto;
+}
+.Login .logo_area figure img {
+  width: 100%;
+}
+.Login .logo_area .logo {
+  text-align: center;
+  font-size: 1.8rem;
+}

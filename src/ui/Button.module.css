@@ -1,0 +1,11 @@
+.PrimaryBtn {
+  background-color: #7d898b;
+  border-radius: 50rem;
+  color: #fff;
+  /* max-width: 300px; */
+  /* margin: 0 auto; */
+}
+.PrimaryBtn button {
+  width: 100%;
+  padding: 1rem 0;
+}

@@ -1,0 +1,42 @@
+.form_control {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+/* InputFormIconLabel */
+.InputFormIconLabel .td_from {
+  position: relative;
+}
+.InputFormIconLabel .td_from .icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+/* InputFormTextLabel */
+.InputFormTextLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.InputFormTextLabel label {
+  min-width: 100px;
+}
+.InputFormTextLabel .td_from {
+  width: 100%;
+}
+.InputFormTextLabel + .error_msg {
+  display: block;
+  margin: 0 0 0.8rem 100px;
+  font-size: 0.9rem;
+  color: #e95050;
+  line-height: 1.2;
+}
