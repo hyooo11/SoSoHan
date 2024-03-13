@@ -8,6 +8,8 @@ import { PrimaryBtn } from "@/ui/Button";
 import { FaUserLarge } from "react-icons/fa6";
 import { FaLock } from "react-icons/fa6";
 import { setCookie } from "cookies-next";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const handle = {
   clickKakaoLogin: () => {
@@ -25,8 +27,9 @@ type LoginInputType = {
 
 const Login = () => {
   const setUser = useSetRecoilState(userState);
-  const todoList = useRecoilValue(userState);
-  console.log(todoList);
+  const userStates = useRecoilValue(userState);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -34,7 +37,6 @@ const Login = () => {
   } = useForm<LoginInputType>();
 
   const onSubmit: SubmitHandler<LoginInputType> = async (data) => {
-    console.log(data);
     try {
       const user = await loginHander(data);
       if (user.token) {
@@ -46,6 +48,13 @@ const Login = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (userStates.isLogin === true) {
+      router.push("/");
+      router.replace("/");
+    }
+  }, [userStates, router]);
 
   return (
     <div className="Login">

@@ -1,5 +1,6 @@
 import { atom } from "recoil";
-import { setCookie } from "cookies-next";
+import { recoilPersist } from "recoil-persist";
+import { deleteCookie } from "cookies-next";
 
 type MemberInfoType = {
   pid: number;
@@ -18,6 +19,7 @@ interface UserStateType {
   memverInfo: MemberInfoType | null;
 }
 
+const { persistAtom } = recoilPersist();
 export const userState = atom<UserStateType>({
   key: "user",
   default: {
@@ -26,8 +28,10 @@ export const userState = atom<UserStateType>({
     refreshToken: "",
     memverInfo: null,
   },
+  effects_UNSTABLE: [persistAtom],
 });
 
+//초기 로그인
 export const loginHander = async (data: {
   username: string;
   password: string;
@@ -40,4 +44,20 @@ export const loginHander = async (data: {
     body: JSON.stringify(data),
   });
   return response.json();
+};
+
+//로그인 체크
+export const loginCheckHander = async (token: string) => {
+  const response = await fetch("/account/login-check", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: "GET",
+  });
+  return response.json();
+};
+
+export const logout = async () => {
+  localStorage.removeItem("recoil-persist");
+  deleteCookie("refreshToken");
 };

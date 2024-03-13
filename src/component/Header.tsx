@@ -2,7 +2,10 @@
 
 import NavMenu from "@/component/NavMenu";
 import PostSearch from "@/component/PostSearch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCookie } from "cookies-next";
+import { userState, loginCheckHander, logout } from "@/recoil/atom/userState";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import { usePathname } from "next/navigation";
 import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -10,8 +13,40 @@ import { IoClose } from "react-icons/io5";
 
 const Header = () => {
   const pathname = usePathname();
+  const setUser = useSetRecoilState(userState);
+  const userStates = useRecoilValue(userState);
+
   const [searchToggle, setSearchToggle] = useState(false);
   const [navToggle, setnNavToggle] = useState(false);
+  const refreshToken = getCookie("refreshToken");
+
+  //엑세스 토큰 재발급
+  useEffect(() => {
+    if (refreshToken) {
+      const reissueToken = async (refreshToken: string) => {
+        try {
+          const response = await fetch("/account/refresh", {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({ refreshToken: refreshToken }),
+          });
+          const token = await response.json();
+          // console.log(data);
+          return token;
+        } catch (error) {
+          console.error("Error reissuing token:", error);
+        }
+      };
+      reissueToken(refreshToken).then((data) => {
+        loginCheckHander(data.reToken).then((data) => {
+          const isLogin = true;
+          setUser({ ...data, isLogin });
+        });
+      });
+    }
+  }, [refreshToken]);
 
   if (pathname.includes("/auth/login")) return null;
   return (
