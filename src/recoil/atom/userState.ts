@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, useSetRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import { deleteCookie } from "cookies-next";
 
@@ -60,4 +60,5 @@ export const loginCheckHander = async (token: string) => {
 export const logout = async () => {
   localStorage.removeItem("recoil-persist");
   deleteCookie("refreshToken");
+  window.location.replace("/");
 };

@@ -15,6 +15,7 @@ const Header = () => {
   const pathname = usePathname();
   const setUser = useSetRecoilState(userState);
   const userStates = useRecoilValue(userState);
+  console.log(userStates);
 
   const [searchToggle, setSearchToggle] = useState(false);
   const [navToggle, setnNavToggle] = useState(false);
