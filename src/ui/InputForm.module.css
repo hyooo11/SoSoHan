@@ -20,6 +20,11 @@
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+  margin-left: 10px;
+  color: #c8c8c8;
+}
+.InputFormIconLabel .td_from input {
+  padding-left: 2.5rem;
 }
 /* InputFormTextLabel */
 .InputFormTextLabel {
