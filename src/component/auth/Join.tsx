@@ -35,7 +35,7 @@ const schema = yup.object().shape({
     .test("uniqueNickName", "이미 사용중인 닉네임 입니다.", async (value) => {
       try {
         const response = await fetch(
-          `/account/nickname_check?nickname=${value}`
+          `/api/account/nickname_check?nickname=${value}`
         );
         const res = await response.json();
         return res.duplicate === false;
@@ -51,7 +51,7 @@ const schema = yup.object().shape({
     })
     .test("uniqueEmail", "이미 사용중인 이메일 입니다.", async (value) => {
       try {
-        const response = await fetch(`/account/email_check?email=${value}`);
+        const response = await fetch(`/api/account/email_check?email=${value}`);
         const res = await response.json();
         return res.duplicate === false;
       } catch {
@@ -107,7 +107,7 @@ const Join = () => {
     formData.append("password", data.password);
     formData.append("phone", data.phone);
 
-    const res = await fetch("/account/join", {
+    const res = await fetch("/api/account/join", {
       method: "POST",
       body: formData,
     })

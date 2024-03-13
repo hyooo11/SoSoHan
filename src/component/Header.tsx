@@ -4,7 +4,7 @@ import NavMenu from "@/component/NavMenu";
 import PostSearch from "@/component/PostSearch";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
-import { userState, loginCheckHander, logout } from "@/recoil/atom/userState";
+import { userState, loginCheckHander } from "@/recoil/atom/userState";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import { usePathname } from "next/navigation";
 import { IoSearch } from "react-icons/io5";
@@ -14,8 +14,6 @@ import { IoClose } from "react-icons/io5";
 const Header = () => {
   const pathname = usePathname();
   const setUser = useSetRecoilState(userState);
-  const userStates = useRecoilValue(userState);
-  console.log(userStates);
 
   const [searchToggle, setSearchToggle] = useState(false);
   const [navToggle, setnNavToggle] = useState(false);
@@ -26,7 +24,7 @@ const Header = () => {
     if (refreshToken) {
       const reissueToken = async (refreshToken: string) => {
         try {
-          const response = await fetch("/account/refresh", {
+          const response = await fetch("/api/account/refresh", {
             headers: {
               "Content-Type": "application/json",
             },
@@ -34,7 +32,6 @@ const Header = () => {
             body: JSON.stringify({ refreshToken: refreshToken }),
           });
           const token = await response.json();
-          // console.log(data);
           return token;
         } catch (error) {
           console.error("Error reissuing token:", error);

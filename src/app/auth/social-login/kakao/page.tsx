@@ -8,7 +8,6 @@ const KaKaoLoginPage = () => {
 
   useEffect(() => {
     const code = searchParams.get("code") as string;
-    console.log(code);
     kakaoLogin(code);
   }, [searchParams]);
 

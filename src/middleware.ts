@@ -4,8 +4,6 @@ import { NextResponse, NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const refreshToken = request.cookies.get("refreshToken");
 
-  console.log(refreshToken);
-
   if (request.nextUrl.pathname.startsWith("/")) {
     if (!refreshToken) {
       return NextResponse.redirect(new URL("/auth/login", request.url));

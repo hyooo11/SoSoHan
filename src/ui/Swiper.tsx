@@ -7,7 +7,11 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import "./Swiper.css";
 
-const PostListSwiper = () => {
+type imagesProps = {
+  images: string[];
+};
+
+const PostListSwiper = ({ images }: imagesProps) => {
   return (
     <>
       <Swiper
@@ -19,26 +23,18 @@ const PostListSwiper = () => {
         modules={[Pagination]}
         className="PostListSwiper"
       >
-        <SwiperSlide>
-          <figure>
-            <img src="/media/dummy_image.jpg" />
-          </figure>
-        </SwiperSlide>
-        <SwiperSlide>
-          <figure>
-            <img src="/media/dummy_image.jpg" />
-          </figure>
-        </SwiperSlide>
-        <SwiperSlide>
-          <figure>
-            <img src="/media/dummy_image.jpg" />
-          </figure>
-        </SwiperSlide>
-        <SwiperSlide>
-          <figure>
-            <img src="/media/dummy_image.jpg" />
-          </figure>
-        </SwiperSlide>
+        {images.map((data, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <figure>
+                <img
+                  src={`http://3.39.134.138:8080/view/${data}`}
+                  alt={`${index}번째 이미지`}
+                />
+              </figure>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </>
   );

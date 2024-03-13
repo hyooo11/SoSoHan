@@ -36,7 +36,7 @@ export const loginHander = async (data: {
   username: string;
   password: string;
 }) => {
-  const response = await fetch("/account/login", {
+  const response = await fetch("/api/account/login", {
     headers: {
       "Content-Type": "application/json",
     },
@@ -48,7 +48,7 @@ export const loginHander = async (data: {
 
 //로그인 체크
 export const loginCheckHander = async (token: string) => {
-  const response = await fetch("/account/login-check", {
+  const response = await fetch("/api/account/login-check", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
