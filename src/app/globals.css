@@ -7,6 +7,7 @@
 /*root*/
 /*reset*/
 /*Header*/
+/* BottomMenu */
 /* Login */
 
 /* font */
@@ -17,10 +18,10 @@
   font-style: normal;
 }
 /*root*/
-:root {
+/* :root {
   background-color: #fff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
+} */
 
 /*reset*/
 
@@ -169,10 +170,14 @@ figcaption {
   position: relative;
   background-color: #f6f4f2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  min-height: 100vh;
+  height: 100vh;
 }
 .gloval-page {
   padding: 0 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100% - 100px);
+  margin-bottom: 50px;
 }
 
 .logo {
@@ -182,8 +187,18 @@ figcaption {
 
 /*Header*/
 .Header {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  height: 50px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.Header .logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.7rem;
 }
 .Header .nav_btn_area {
   display: flex;
@@ -211,6 +226,44 @@ figcaption {
   right: 0;
   z-index: 2; */
   background: #fff;
+}
+
+/* BottomMenu */
+.BottomMenu {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  background-color: #fff;
+  z-index: 3;
+  left: 0;
+  right: 0;
+}
+.BottomMenu ul {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.BottomMenu ul li,
+.BottomMenu ul li a {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.BottomMenu ul li svg {
+  width: 20px;
+  height: 20px;
+}
+
+.BottomMenu ul li span {
+  display: block;
+  padding-top: 3px;
 }
 
 /* Login */

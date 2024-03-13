@@ -26,18 +26,22 @@ const PostCard = ({ postList }: PostProps) => {
               <div className={style.PostCard}>
                 <div className={style.user_profile}>
                   <figure>
-                    <img
-                      src="/media/icon/dummy_profile.png"
-                      alt="프로필 이미지"
-                    />
+                    <img src={data.profileImg} alt="프로필 이미지" />
                   </figure>
-                  <div>
-                    <span>닉네임</span>
-                    <span>{data.regiDate.slice(0, 10)}</span>
+                  <div className={style.user_info}>
+                    <span className={style.nickname}>{data.nickName}</span>
+                    <span className={style.date}>
+                      {data.regiDate.slice(0, 10)}
+                    </span>
                   </div>
                 </div>
                 <div className={style.content}>
-                  <div>{data.content}</div>
+                  <div className={style.desc}>{data.content}</div>
+                  <div className={style.hash_tag}>
+                    {data.hashTag.map((data, index) => {
+                      return <p key={index}># {data}</p>;
+                    })}
+                  </div>
                   <PostListSwiper images={data.images} />
                 </div>
               </div>

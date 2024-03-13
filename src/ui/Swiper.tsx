@@ -27,10 +27,7 @@ const PostListSwiper = ({ images }: imagesProps) => {
           return (
             <SwiperSlide key={index}>
               <figure>
-                <img
-                  src={`http://3.39.134.138:8080/view/${data}`}
-                  alt={`${index}번째 이미지`}
-                />
+                <img src={data} alt={`${index}번째 이미지`} />
               </figure>
             </SwiperSlide>
           );

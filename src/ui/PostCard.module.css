@@ -1,11 +1,12 @@
 .PostCard .user_profile {
+  padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
 }
 .PostCard .user_profile figure {
   position: relative;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50rem;
   overflow: hidden;
 }
@@ -14,4 +15,35 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.PostCard .user_profile .user_info .nickname {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+}
+.PostCard .user_profile .user_info .date {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+.PostCard .content .desc {
+  font-size: 1rem;
+  line-height: 1.3;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.PostCard .content .hash_tag {
+  display: flex;
+  padding: 0.5rem 0;
+}
+.PostCard .content .hash_tag p {
+  background-color: #c8c8c8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  margin-right: 3px;
 }

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import RecoilRootProvider from "@/recoil/recoilRootProvider";
-import Header from "@/component/Header";
+
+import LoginCheck from "@/util/LoginCheck";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +22,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="gloval-wrap">
           <RecoilRootProvider>
-            <Header />
-            <div className="gloval-page">{children}</div>
+            <LoginCheck />
+            {children}
           </RecoilRootProvider>
         </div>
       </body>

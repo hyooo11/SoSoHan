@@ -6,6 +6,8 @@ import Link from "next/link";
 
 export interface PostType {
   id: number;
+  nickName: string;
+  profileImg: string;
   title: string;
   content: string;
   regiDate: string;
