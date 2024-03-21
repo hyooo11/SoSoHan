@@ -1,5 +1,6 @@
 import style from "./InputFile.module.css";
-import { InputProfileType } from "@/types/ui/Type";
+import { InputProfileType, InputPostFileType } from "@/types/ui/Type";
+import PostListSwiper from "@/ui/Swiper";
 
 export const InputProfile = ({
   priview,
@@ -31,6 +32,30 @@ export const InputProfile = ({
             id="profileImg"
           />
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const InputPostImage = ({
+  priview,
+  label,
+  onChange,
+}: InputPostFileType) => {
+  return (
+    <div>
+      <div>
+        <label htmlFor="postImage">{label}</label>
+        <input
+          type="file"
+          id="postImage"
+          onChange={onChange}
+          accept="image/*"
+          multiple={true}
+        />
+      </div>
+      <div>
+        <PostListSwiper images={priview} />
       </div>
     </div>
   );

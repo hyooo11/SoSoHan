@@ -8,6 +8,12 @@ export type InputProfileType = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
+export type InputPostFileType = {
+  priview: string[] | null | undefined;
+  label: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
 export type InputFormIconLabelType = {
   icon: React.ReactNode;
   type: string;

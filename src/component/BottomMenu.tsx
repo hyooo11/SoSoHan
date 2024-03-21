@@ -20,8 +20,10 @@ const BottomMenu = () => {
           <span>검색</span>
         </li>
         <li>
-          <FaEdit />
-          <span>게시글 작성</span>
+          <Link href="/post/new">
+            <FaEdit />
+            <span>게시글 작성</span>
+          </Link>
         </li>
         <li>
           <FaUserLarge />

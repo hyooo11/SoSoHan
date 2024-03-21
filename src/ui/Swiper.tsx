@@ -8,14 +8,23 @@ import { Pagination } from "swiper/modules";
 import "./Swiper.css";
 
 type imagesProps = {
-  images: string[];
+  images: string[] | null | undefined;
 };
 
 const PostListSwiper = ({ images }: imagesProps) => {
+  const viweOption = () => {
+    if (images) {
+      if (images.length >= 3) {
+        return 1.5;
+      } else if (images.length <= 2) {
+        return 1;
+      }
+    }
+  };
   return (
     <>
       <Swiper
-        slidesPerView={1.5}
+        slidesPerView={viweOption()}
         spaceBetween={10}
         centeredSlides={false}
         loop={true}
@@ -23,7 +32,7 @@ const PostListSwiper = ({ images }: imagesProps) => {
         modules={[Pagination]}
         className="PostListSwiper"
       >
-        {images.map((data, index) => {
+        {images?.map((data, index) => {
           return (
             <SwiperSlide key={index}>
               <figure>
