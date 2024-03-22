@@ -43,9 +43,11 @@ const Login = () => {
         const isLogin = true;
         setUser({ ...user, isLogin });
         setCookie("refreshToken", user.refreshToken);
+      } else {
+        alert("존재하지 않는 계정입니다. 이메일 또는 비밀번호를 확인해주세요.");
       }
     } catch (error) {
-      console.error(error);
+      alert("로그인에 실패했습니다. 다시 시도해주세요.");
     }
   };
 

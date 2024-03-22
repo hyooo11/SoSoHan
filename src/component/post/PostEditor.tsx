@@ -2,6 +2,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { InputFormTextLabel } from "@/ui/InputForm";
 import { InputPostImage } from "@/ui/InputFile";
+import HashTag from "@/ui/HashTag";
 import { useState } from "react";
 
 type EditorInputType = {
@@ -62,6 +63,7 @@ const PostEditor = () => {
           label={"이미지 등록"}
           onChange={addFilesData}
         />
+        <HashTag />
       </form>
     </div>
   );
