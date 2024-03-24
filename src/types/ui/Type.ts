@@ -1,3 +1,9 @@
+import {
+  UseFormRegister,
+  UseFormSetValue,
+  UseFormWatch,
+} from "react-hook-form";
+
 export type PrimaryBtnType = {
   text: string;
 };
@@ -28,4 +34,12 @@ export type InputFormTextLabelType = {
   register: any;
   placeholder: string;
   errorMessage?: string | null | undefined;
+};
+
+export type HashTagProps = {
+  hashList: readonly string[];
+  name: string;
+  watch: UseFormWatch<any>;
+  setValue: UseFormSetValue<any>;
+  register: UseFormRegister<any>;
 };

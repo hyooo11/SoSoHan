@@ -2,21 +2,17 @@ import { atom, useSetRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import { deleteCookie } from "cookies-next";
 
-type MemberInfoType = {
-  pid: number;
-  name: string;
-  nickName: string;
-  email: string;
-  phone: string;
-  regiDate: string;
-  role: string;
-};
-
 interface UserStateType {
   isLogin: boolean;
-  token: string;
-  refreshToken: string;
-  memverInfo: MemberInfoType | null;
+  token: string | null;
+  refreshToken: string | null;
+  pid: number | null;
+  name: string | null;
+  nickName: string | null;
+  email: string | null;
+  phone: string | null;
+  regiDate: string | null;
+  role: string | null;
 }
 
 const { persistAtom } = recoilPersist();
@@ -24,9 +20,15 @@ export const userState = atom<UserStateType>({
   key: "user",
   default: {
     isLogin: false,
-    token: "",
-    refreshToken: "",
-    memverInfo: null,
+    token: null,
+    refreshToken: null,
+    pid: null,
+    name: null,
+    nickName: null,
+    email: null,
+    phone: null,
+    regiDate: null,
+    role: null,
   },
   effects_UNSTABLE: [persistAtom],
 });

@@ -4,41 +4,68 @@ import { InputFormTextLabel } from "@/ui/InputForm";
 import { InputPostImage } from "@/ui/InputFile";
 import HashTag from "@/ui/HashTag";
 import { useState } from "react";
+import { PrimaryBtn } from "@/ui/Button";
+import { userState } from "@/recoil/atom/userState";
+import { useRecoilValue } from "recoil";
 
 type EditorInputType = {
   title: string;
   content: string;
+  hashTag: string;
+  images: string[];
+  hashList: readonly string[];
 };
 
 const PostEditor = () => {
-  const [imageData, setImageData] = useState<FileList | null>();
+  const [imageData, setImageData] = useState<File[] | null>();
   const [imagePriview, setImagePriview] = useState<string[] | null>();
+
+  const userStates = useRecoilValue(userState);
+
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<EditorInputType>({ mode: "onChange" });
 
   //게시물 이미지 등록 및 미리보기
   const addFilesData = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
-      const imgData = e.target.files;
       const imgFile = Array.from(e.target.files);
-      console.log(imgFile);
-
       const imageList = imgFile.map((data, _) => {
         const photoURL = URL.createObjectURL(data);
         return photoURL;
       });
 
-      setImageData(imgData);
+      setImageData(imgFile);
       setImagePriview(imageList);
     }
   };
+  //해시태그
+  const hashList: readonly string[] = watch("hashList", []);
 
   const onSubmit: SubmitHandler<EditorInputType> = async (data) => {
-    console.log(data);
+    const formData = new FormData();
+    formData.append("userpid", JSON.stringify(userStates.pid));
+    formData.append("title", data.title);
+    formData.append("content", data.content);
+    imageData?.forEach((imageData) => formData.append("images", imageData));
+    data.hashList?.forEach((hashList) => formData.append("hashList", hashList));
+
+    const res = await fetch("/api/posts", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((error) => console.log(error));
+
+    console.log(res);
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,7 +90,14 @@ const PostEditor = () => {
           label={"이미지 등록"}
           onChange={addFilesData}
         />
-        <HashTag />
+        <HashTag
+          hashList={hashList}
+          name={"hashTag"}
+          register={register}
+          watch={watch}
+          setValue={setValue}
+        />
+        <PrimaryBtn text={"발행"} />
       </form>
     </div>
   );
