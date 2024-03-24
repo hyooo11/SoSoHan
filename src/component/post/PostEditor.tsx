@@ -62,8 +62,6 @@ const PostEditor = () => {
         return response.json();
       })
       .catch((error) => console.log(error));
-
-    console.log(res);
   };
 
   return (
