@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { InputFormTextLabel } from "@/ui/InputForm";
 import { InputPostImage } from "@/ui/InputFile";
 import HashTag from "@/ui/HashTag";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PrimaryBtn } from "@/ui/Button";
 import { userState } from "@/recoil/atom/userState";
 import { useRecoilValue } from "recoil";

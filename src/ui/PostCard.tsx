@@ -10,9 +10,6 @@ interface PostProps {
 }
 
 const PostCard = ({ postList }: PostProps) => {
-  useEffect(() => {
-    postList && console.log(postList);
-  }, []);
   return (
     <>
       {postList &&

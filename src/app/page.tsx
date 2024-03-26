@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       <Header backBtn={false} />
-      <div className="gloval-page">
-        <PostList />
-        <BottomMenu />
-      </div>
+      {/* <div className="gloval-page"> */}
+      <PostList />
+      <BottomMenu />
+      {/* </div> */}
     </>
   );
 }
