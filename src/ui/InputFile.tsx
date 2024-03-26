@@ -43,9 +43,11 @@ export const InputPostImage = ({
   onChange,
 }: InputPostFileType) => {
   return (
-    <div>
+    <div className={style.InputPostImage}>
       <div>
-        <label htmlFor="postImage">{label}</label>
+        <label htmlFor="postImage" className="th-label">
+          {label}
+        </label>
         <input
           type="file"
           id="postImage"

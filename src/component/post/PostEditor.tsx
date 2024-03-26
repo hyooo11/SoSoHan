@@ -1,9 +1,10 @@
 "use client";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { InputFormTextLabel } from "@/ui/InputForm";
 import { InputPostImage } from "@/ui/InputFile";
 import HashTag from "@/ui/HashTag";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PrimaryBtn } from "@/ui/Button";
 import { userState } from "@/recoil/atom/userState";
 import { useRecoilValue } from "recoil";
@@ -20,6 +21,9 @@ const PostEditor = () => {
   const [imageData, setImageData] = useState<File[] | null>();
   const [imagePriview, setImagePriview] = useState<string[] | null>();
 
+  console.log(imageData);
+  console.log(imagePriview);
+
   const userStates = useRecoilValue(userState);
 
   const {
@@ -32,15 +36,28 @@ const PostEditor = () => {
 
   //게시물 이미지 등록 및 미리보기
   const addFilesData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const photoData = [];
+    const photoURL = [];
+    const FILE_SIZE_MAX_LIMIT = 5 * 1024 * 1024; // 5MB
     if (e.target.files !== null) {
       const imgFile = Array.from(e.target.files);
-      const imageList = imgFile.map((data, _) => {
-        const photoURL = URL.createObjectURL(data);
-        return photoURL;
-      });
-
-      setImageData(imgFile);
-      setImagePriview(imageList);
+      for (let i = 0; i < imgFile.length; i++) {
+        const imgList = imgFile[i];
+        if (imgList.type.startsWith("image/")) {
+          if (imgFile.length > 5) {
+            alert("이미지는 최대 10개까지 등록 가능합니다.");
+            break;
+          }
+          if (imgList.size >= FILE_SIZE_MAX_LIMIT) {
+            alert("이미지 파일의 최대용랑은 개당 5mb입니다.");
+            break;
+          }
+          photoData.push(imgList);
+          photoURL.push(URL.createObjectURL(imgList));
+        }
+      }
+      setImageData(photoData);
+      setImagePriview(photoURL);
     }
   };
   //해시태그
@@ -85,7 +102,7 @@ const PostEditor = () => {
         />
         <InputPostImage
           priview={imagePriview}
-          label={"이미지 등록"}
+          label={"이미지 선택"}
           onChange={addFilesData}
         />
         <HashTag

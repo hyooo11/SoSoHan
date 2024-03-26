@@ -21,27 +21,32 @@ const PostListSwiper = ({ images }: imagesProps) => {
       }
     }
   };
+  if (images?.length === 0) {
+    return null;
+  }
   return (
     <>
-      <Swiper
-        slidesPerView={viweOption()}
-        spaceBetween={10}
-        centeredSlides={false}
-        loop={true}
-        pagination={true}
-        modules={[Pagination]}
-        className="PostListSwiper"
-      >
-        {images?.map((data, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <figure>
-                <img src={data} alt={`${index}번째 이미지`} />
-              </figure>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {images && (
+        <Swiper
+          slidesPerView={viweOption()}
+          spaceBetween={10}
+          centeredSlides={false}
+          loop={true}
+          pagination={true}
+          modules={[Pagination]}
+          className="PostListSwiper"
+        >
+          {images?.map((data, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <figure>
+                  <img src={data} alt={`${index}번째 이미지`} />
+                </figure>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      )}
     </>
   );
 };

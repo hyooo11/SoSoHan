@@ -22,6 +22,7 @@ export const InputFormIconLabel = ({
           name={name}
           {...(register && register(name))}
           className={style.form_control}
+          autoComplete="off"
         />
       </div>
     </div>
