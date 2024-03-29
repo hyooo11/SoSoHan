@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import RecoilRootProvider from "@/recoil/recoilRootProvider";
-import QueryProvider from "@/tanstack/QueryProvider";
 
 import LoginCheck from "@/util/LoginCheck";
 
@@ -23,10 +22,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="gloval-wrap">
           <RecoilRootProvider>
-            <QueryProvider>
-              <LoginCheck />
-              {children}
-            </QueryProvider>
+            <LoginCheck />
+            {children}
           </RecoilRootProvider>
         </div>
       </body>

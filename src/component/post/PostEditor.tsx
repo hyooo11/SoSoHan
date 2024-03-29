@@ -63,7 +63,9 @@ const PostEditor = () => {
   //해시태그
   const hashList: readonly string[] = watch("hashList", []);
 
-  const onSubmit: SubmitHandler<EditorInputType> = async (data) => {
+  const onSubmit: SubmitHandler<EditorInputType> = async (data, e) => {
+    console.log(e);
+    e?.preventDefault();
     const formData = new FormData();
     formData.append("userpid", JSON.stringify(userStates.pid));
     formData.append("title", data.title);
@@ -71,11 +73,12 @@ const PostEditor = () => {
     imageData?.forEach((imageData) => formData.append("images", imageData));
     data.hashList?.forEach((hashList) => formData.append("hashList", hashList));
 
-    const res = await fetch("/api/posts", {
+    await fetch("/api/posts", {
       method: "POST",
       body: formData,
     })
       .then((response) => {
+        console.log(response);
         return response.json();
       })
       .catch((error) => console.log(error));

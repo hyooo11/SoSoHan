@@ -8,7 +8,7 @@ export const getPostLastPage = async () => {
   return response.json();
 };
 
-export const getPostDetail = async (postPid: string) => {
+export const getPostDetail = async (postPid: number) => {
   const response = await fetch(`/api/posts/${postPid}`);
   return response.json();
 };

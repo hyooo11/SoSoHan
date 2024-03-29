@@ -33,6 +33,7 @@ const HashTag = ({
   setValue,
 }: HashTagProps) => {
   const addHashtag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    e.preventDefault;
     const inputValue = watch("hashTag");
     if (e.keyCode === 13 && inputValue.trim() !== "") {
       setValue("hashList", [...hashList, `#${inputValue}`]);
