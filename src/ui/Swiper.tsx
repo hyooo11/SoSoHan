@@ -21,6 +21,15 @@ const PostListSwiper = ({ images }: imagesProps) => {
       }
     }
   };
+  const loopOption = () => {
+    if (images) {
+      if (images.length >= 3) {
+        return true;
+      } else if (images.length <= 2) {
+        return false;
+      }
+    }
+  };
   if (images?.length === 0) {
     return null;
   }
@@ -31,7 +40,7 @@ const PostListSwiper = ({ images }: imagesProps) => {
           slidesPerView={viweOption()}
           spaceBetween={10}
           centeredSlides={false}
-          loop={true}
+          loop={loopOption()}
           pagination={{
             clickable: true,
             type: "progressbar",
