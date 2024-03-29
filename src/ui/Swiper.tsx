@@ -32,7 +32,10 @@ const PostListSwiper = ({ images }: imagesProps) => {
           spaceBetween={10}
           centeredSlides={false}
           loop={true}
-          pagination={true}
+          pagination={{
+            clickable: true,
+            type: "progressbar",
+          }}
           modules={[Pagination]}
           className="PostListSwiper"
         >

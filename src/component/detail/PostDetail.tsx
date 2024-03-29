@@ -29,7 +29,8 @@ const PostDetail = ({ postPid }: PostPidProps) => {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(postDetail);
+  if (postDetail && !postDetail.profileImg)
+    postDetail.profileImg = "/media/icon/dummy_profile.png";
   return (
     <>
       {postDetail && (

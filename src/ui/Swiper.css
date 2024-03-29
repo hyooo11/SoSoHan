@@ -1,5 +1,5 @@
 .PostListSwiper {
-  padding-bottom: 40px;
+  padding-bottom: 15px;
 }
 
 .PostListSwiper .swiper-slide figure {
@@ -14,4 +14,12 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.PostListSwiper .swiper-pagination {
+  top: auto;
+  bottom: 0;
+  background-color: #efefef;
+}
+.PostListSwiper .swiper-pagination .swiper-pagination-progressbar-fill {
+  background-color: #7d898b;
 }

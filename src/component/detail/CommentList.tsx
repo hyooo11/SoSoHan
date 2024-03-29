@@ -38,6 +38,8 @@ const CommentList = ({ commentList }: CommentListProps) => {
     <CommentWrap>
       {commentList &&
         commentList.map((data, _) => {
+          if (!data.profileImg)
+            data.profileImg = "/media/icon/dummy_profile.png";
           return (
             <div key={data.id}>
               <Box>
