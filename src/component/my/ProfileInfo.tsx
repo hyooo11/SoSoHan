@@ -1,6 +1,7 @@
 "use client";
 import { userState, UserStateType } from "@/recoil/atom/userState";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 type Props = { userInfo: UserStateType };
 
@@ -29,12 +30,14 @@ const InfoWrap = styled.div`
 `;
 
 const ProfileInfo = ({ userInfo }: Props) => {
-  // const [userInfo, setUserInfo] = useState<UserStateType>();
-  // const userStates = useRecoilValue(userState);
-  // console.log(userInfo);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   return (
     <>
-      {userInfo && (
+      {isClient && userInfo && (
         <PorfileInfoBox>
           <InfoWrap>
             <div className="img_box">
