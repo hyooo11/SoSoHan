@@ -26,8 +26,10 @@ const BottomMenu = () => {
           </Link>
         </li>
         <li>
-          <FaUserLarge />
-          <span>내 프로필</span>
+          <Link href="/my/profile">
+            <FaUserLarge />
+            <span>내 프로필</span>
+          </Link>
         </li>
         <li>
           <PiSignOutBold />

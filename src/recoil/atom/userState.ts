@@ -2,7 +2,7 @@ import { atom, useSetRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import { deleteCookie } from "cookies-next";
 
-interface UserStateType {
+export interface UserStateType {
   isLogin: boolean;
   token: string | null;
   refreshToken: string | null;
@@ -13,6 +13,7 @@ interface UserStateType {
   phone: string | null;
   regiDate: string | null;
   role: string | null;
+  profileImg?: string;
 }
 
 const { persistAtom } = recoilPersist();
@@ -29,6 +30,7 @@ export const userState = atom<UserStateType>({
     phone: null,
     regiDate: null,
     role: null,
+    profileImg: "",
   },
   effects_UNSTABLE: [persistAtom],
 });
