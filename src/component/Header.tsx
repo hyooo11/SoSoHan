@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import { IoChevronBack } from "react-icons/io5";
+import Link from "next/link";
 
 const Header = ({ backBtn }: { backBtn: boolean }) => {
   const router = useRouter();
@@ -14,7 +15,9 @@ const Header = ({ backBtn }: { backBtn: boolean }) => {
   return (
     <>
       <div className="Header">
-        <h1 className="logo">SOSOHAN</h1>
+        <h1 className="logo">
+          <Link href="/">SOSOHAN</Link>
+        </h1>
         {backBtn ? (
           <button onClick={() => router.back()}>
             <IoChevronBack />

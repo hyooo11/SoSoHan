@@ -107,7 +107,7 @@ const Join = () => {
     formData.append("password", data.password);
     formData.append("phone", data.phone);
 
-    const res = await fetch("/api/account/join", {
+    await fetch("/api/account/join", {
       method: "POST",
       body: formData,
     })
@@ -115,8 +115,6 @@ const Join = () => {
         return response.json();
       })
       .catch((error) => console.log(error));
-
-    console.log(res);
   };
 
   return (

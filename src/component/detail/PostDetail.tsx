@@ -3,9 +3,7 @@ import { getPostDetail } from "@/api/postAPI";
 import { useEffect, useState } from "react";
 import style from "./PostDetail.module.css";
 import PostListSwiper from "@/ui/Swiper";
-import { CiMenuKebab } from "react-icons/ci";
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBinLine } from "react-icons/ri";
+import PostMenu from "@/ui/PostMenu";
 
 type PostPidProps = { postPid: number };
 
@@ -22,7 +20,7 @@ interface PostType {
 }
 const PostDetail = ({ postPid }: PostPidProps) => {
   const [postDetail, setPostDetail] = useState<PostType | null | undefined>();
-  const [postMenu, setPostMenu] = useState(false);
+
   useEffect(() => {
     getPostDetail(postPid)
       .then((response) => {
@@ -46,28 +44,7 @@ const PostDetail = ({ postPid }: PostPidProps) => {
                 <p className={style.nick_name}>{postDetail.nickName}</p>
                 <p className={style.date}>{postDetail.regiDate.slice(0, 10)}</p>
               </div>
-              <div
-                className={style.menu_btn}
-                onClick={() => {
-                  setPostMenu(!postMenu);
-                }}
-              >
-                <CiMenuKebab />
-                {postMenu ? (
-                  <div className={style.post_menu}>
-                    <p>
-                      <FaEdit />
-                      수정하기
-                    </p>
-                    <p>
-                      <RiDeleteBinLine />
-                      삭제하기
-                    </p>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
+              <PostMenu />
             </div>
           </div>
           <div className={style.desc}>{postDetail.content}</div>

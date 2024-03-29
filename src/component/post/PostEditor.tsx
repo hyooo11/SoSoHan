@@ -21,9 +21,6 @@ const PostEditor = () => {
   const [imageData, setImageData] = useState<File[] | null>();
   const [imagePriview, setImagePriview] = useState<string[] | null>();
 
-  console.log(imageData);
-  console.log(imagePriview);
-
   const userStates = useRecoilValue(userState);
 
   const {
