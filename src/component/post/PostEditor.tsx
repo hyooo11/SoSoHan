@@ -3,7 +3,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { InputFormTextLabel } from "@/ui/InputForm";
 import { InputPostImage } from "@/ui/InputFile";
-import HashTag from "@/ui/HashTag";
 import { useState } from "react";
 import { PrimaryBtn } from "@/ui/Button";
 import { userState } from "@/recoil/atom/userState";
@@ -14,7 +13,6 @@ type EditorInputType = {
   content: string;
   hashTag: string;
   images: string[];
-  hashList: readonly string[];
 };
 
 const PostEditor = () => {
@@ -57,8 +55,6 @@ const PostEditor = () => {
       setImagePriview(photoURL);
     }
   };
-  //해시태그
-  const hashList: readonly string[] = watch("hashList", []);
 
   const onSubmit: SubmitHandler<EditorInputType> = async (data, e) => {
     console.log(e);
@@ -68,7 +64,6 @@ const PostEditor = () => {
     formData.append("title", data.title);
     formData.append("content", data.content);
     imageData?.forEach((imageData) => formData.append("images", imageData));
-    data.hashList?.forEach((hashList) => formData.append("hashList", hashList));
 
     await fetch("/api/posts", {
       method: "POST",
@@ -104,13 +99,6 @@ const PostEditor = () => {
           priview={imagePriview}
           label={"이미지 선택"}
           onChange={addFilesData}
-        />
-        <HashTag
-          hashList={hashList}
-          name={"hashTag"}
-          register={register}
-          watch={watch}
-          setValue={setValue}
         />
         <PrimaryBtn text={"발행"} />
       </form>

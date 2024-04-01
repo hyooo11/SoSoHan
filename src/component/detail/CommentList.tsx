@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 type CommentListProps = {
   commentList: CommentType[] | null;
+  userPid: number | null;
 };
 
 const CommentWrap = styled.div``;
@@ -33,8 +34,8 @@ const Date = styled.p`
 const Desc = styled.div`
   padding-top: 5px;
 `;
-const CommentList = ({ commentList }: CommentListProps) => {
-  console.log(commentList);
+const CommentList = ({ commentList, userPid }: CommentListProps) => {
+  console.log(userPid);
 
   return (
     <CommentWrap>
@@ -56,7 +57,7 @@ const CommentList = ({ commentList }: CommentListProps) => {
                   </WriterInfo>
                   <Desc>{data.comment}</Desc>
                 </div>
-                <PostMenu />
+                {data.writerid === userPid ? <PostMenu /> : ""}
               </Box>
             </div>
           );

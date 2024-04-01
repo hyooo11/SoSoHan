@@ -211,6 +211,7 @@ figcaption {
 .Header .nav_btn_area svg {
   width: 2rem;
   height: 2rem;
+  color: #7d898b;
 }
 .Header .nav_btn_area p {
   width: 100%;
@@ -227,9 +228,10 @@ figcaption {
   top: 0;
   right: 0;
   bottom: 0;
+  left: 50%;
   z-index: 2;
   background: #fff;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 50px 1rem 1rem 1rem;
 }
 .PostSearch {
   /* position: absolute; */
@@ -249,6 +251,7 @@ figcaption {
   z-index: 3;
   left: 0;
   right: 0;
+  color: #7d898b;
 }
 .BottomMenu ul {
   position: absolute;

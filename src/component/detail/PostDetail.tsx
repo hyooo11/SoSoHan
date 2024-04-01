@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import style from "./PostDetail.module.css";
 import PostListSwiper from "@/ui/Swiper";
 import PostMenu from "@/ui/PostMenu";
+import { userState } from "@/recoil/atom/userState";
+import { useRecoilValue } from "recoil";
 
 type PostPidProps = { postPid: number };
 
@@ -20,6 +22,9 @@ interface PostType {
 }
 const PostDetail = ({ postPid }: PostPidProps) => {
   const [postDetail, setPostDetail] = useState<PostType | null | undefined>();
+  const userStates = useRecoilValue(userState);
+  console.log(userStates);
+  console.log(postDetail);
 
   useEffect(() => {
     getPostDetail(postPid)
@@ -45,7 +50,7 @@ const PostDetail = ({ postPid }: PostPidProps) => {
                 <p className={style.nick_name}>{postDetail.nickName}</p>
                 <p className={style.date}>{postDetail.regiDate.slice(0, 10)}</p>
               </div>
-              <PostMenu />
+              {postDetail.writerId === userStates.pid ? <PostMenu /> : ""}
             </div>
           </div>
           <div className={style.desc}>{postDetail.content}</div>

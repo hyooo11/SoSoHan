@@ -18,13 +18,29 @@ const ToggleBtn = styled.div`
     color: #c8c8c8;
   }
 `;
-
 const MenuBox = styled.div`
   position: absolute;
+  z-index: 1;
   width: 200px;
-  top: 1rem;
+  top: 25px;
   right: 0;
   background-color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  & > p {
+    padding: 7px 0;
+    display: flex;
+  }
+  & > .edit_ {
+    color: #7d898b;
+  }
+  & > .del_ {
+    color: #da6b6b;
+  }
+  & > p .icon {
+    padding-right: 5px;
+  }
 `;
 
 const PostMenu = () => {
@@ -42,13 +58,17 @@ const PostMenu = () => {
 
       {postMenu ? (
         <MenuBox>
-          <p>
-            <FaEdit />
-            수정하기
+          <p className="edit_">
+            <span className="icon">
+              <FaEdit />
+            </span>
+            <span className="txt">수정하기</span>
           </p>
-          <p>
-            <RiDeleteBinLine />
-            삭제하기
+          <p className="del_">
+            <span className="icon">
+              <RiDeleteBinLine />
+            </span>
+            <span className="txt">삭제하기</span>
           </p>
         </MenuBox>
       ) : (

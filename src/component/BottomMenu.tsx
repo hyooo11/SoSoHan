@@ -1,5 +1,7 @@
+"use client";
+
 import { IoHome } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
+import { logout } from "@/recoil/atom/userState";
 import { FaEdit } from "react-icons/fa";
 import { FaUserLarge } from "react-icons/fa6";
 import { PiSignOutBold } from "react-icons/pi";
@@ -16,10 +18,6 @@ const BottomMenu = () => {
           </Link>
         </li>
         <li>
-          <FaSearch />
-          <span>검색</span>
-        </li>
-        <li>
           <Link href="/post/new">
             <FaEdit />
             <span>게시글 작성</span>
@@ -31,7 +29,7 @@ const BottomMenu = () => {
             <span>내 프로필</span>
           </Link>
         </li>
-        <li>
+        <li onClick={logout}>
           <PiSignOutBold />
           <span>로그아웃</span>
         </li>

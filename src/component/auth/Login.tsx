@@ -43,9 +43,21 @@ const Login = () => {
   const onSubmit: SubmitHandler<LoginInputType> = async (data) => {
     try {
       const user = await loginHander(data);
+      const userInfo = {
+        isLogin: true,
+        token: user.token,
+        refreshToken: user.refreshToken,
+        pid: user.memberInfo.pid,
+        name: user.memberInfo.name,
+        nickName: user.memberInfo.nickName,
+        email: user.memberInfo.email,
+        phone: user.memberInfo.phone,
+        regiDate: user.memberInfo.regiDate,
+        role: user.memberInfo.role,
+        profileImg: user.memberInfo.profileImg,
+      };
       if (user.token) {
-        const isLogin = true;
-        setUser({ ...user, isLogin });
+        setUser({ ...userInfo });
         setCookie("refreshToken", user.refreshToken);
       } else {
         alert("존재하지 않는 계정입니다. 이메일 또는 비밀번호를 확인해주세요.");

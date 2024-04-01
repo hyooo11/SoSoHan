@@ -22,7 +22,6 @@ export interface CommentType {
 const Comment = ({ postPid }: PostPidProps) => {
   const [commentList, setCommentList] = useState<CommentType[] | null>([]);
   const userStates = useRecoilValue(userState);
-  console.log(userStates);
   //댓글 리스트 함수
   const getComment = () => {
     getCommentList(postPid)
@@ -47,7 +46,7 @@ const Comment = ({ postPid }: PostPidProps) => {
 
   return (
     <div>
-      <CommentList commentList={commentList} />
+      <CommentList commentList={commentList} userPid={userStates.pid} />
       <CommentForm newCommentHandler={newCommentHandler} />
     </div>
   );
