@@ -10,6 +10,10 @@ import { FaLock } from "react-icons/fa6";
 import { setCookie } from "cookies-next";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { SiNaver } from "react-icons/si";
+import { FaFacebookF } from "react-icons/fa";
+import { RiKakaoTalkFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
 
 const handle = {
   clickKakaoLogin: () => {
@@ -81,11 +85,31 @@ const Login = () => {
         />
         <PrimaryBtn text={"이메일로 로그인"} />
       </form>
-      <Link href="/auth/join">이메일로 회원가입</Link>
-
-      <button onClick={handle.clickKakaoLogin}>카카오로 시작</button>
-      <button>네이버로 시작</button>
-      <button>페이스북으로 시작</button>
+      <div className="login_btn_wrap">
+        <div className="social_login_box">
+          <button onClick={handle.clickKakaoLogin} className="kakao_">
+            <span className="icons">
+              <RiKakaoTalkFill />
+            </span>
+            <span>카카오 계정으로 로그인</span>
+          </button>
+          <button className="naver_">
+            <span className="icons">
+              <SiNaver />
+            </span>
+            <span>네이버 계정으로 로그인</span>
+          </button>
+          <button className="facebook_">
+            <span className="icons">
+              <FaFacebookF />
+            </span>
+            <span>페이스북 계정으로 로그인</span>
+          </button>
+        </div>
+        <Link href="/auth/join" className="email_">
+          <span>이메일로 회원가입</span>
+        </Link>
+      </div>
     </div>
   );
 };

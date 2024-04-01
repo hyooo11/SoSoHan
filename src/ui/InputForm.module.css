@@ -14,6 +14,7 @@
 /* InputFormIconLabel */
 .InputFormIconLabel .td_from {
   position: relative;
+  margin-bottom: 0.5rem;
 }
 .InputFormIconLabel .td_from .icon {
   position: absolute;

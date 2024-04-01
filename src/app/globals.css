@@ -269,6 +269,7 @@ figcaption {
 
 /* Login */
 .Login {
+  width: 80%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -278,9 +279,12 @@ figcaption {
   justify-content: center;
   align-items: center;
 }
+.Login .logo_area {
+  margin-bottom: 1rem;
+}
 .Login .logo_area figure {
   width: 70%;
-  margin: 0 auto;
+  margin: 0 auto 10px;
 }
 .Login .logo_area figure img {
   width: 100%;
@@ -288,4 +292,52 @@ figcaption {
 .Login .logo_area .logo {
   text-align: center;
   font-size: 1.8rem;
+}
+.Login .login_btn_wrap {
+  width: 100%;
+}
+.Login .login_btn_wrap .social_login_box {
+  margin: 1.5rem 0 0.5rem;
+}
+
+.Login .login_btn_wrap button,
+.Login .login_btn_wrap a {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50em;
+}
+.Login .login_btn_wrap button .icons,
+.Login .login_btn_wrap a .icons {
+  margin-right: 10px;
+}
+.Login .login_btn_wrap button .icons svg,
+.Login .login_btn_wrap a .icons svb {
+  width: 100%;
+  height: 100%;
+}
+.Login .login_btn_wrap button.kakao_ {
+  background-color: #fee502;
+  color: #181600;
+}
+.Login .login_btn_wrap button.naver_ {
+  background-color: #03c75a;
+  color: #fff;
+}
+.Login .login_btn_wrap button.facebook_ {
+  background-color: #1877f2;
+  color: #fff;
+}
+.Login .login_btn_wrap button.kakao_ .icons {
+  width: 24px;
+}
+.Login .login_btn_wrap button.naver_ .icons {
+  width: 15px;
+}
+.Login .login_btn_wrap button.facebook_ .icons {
+  width: 19px;
 }
