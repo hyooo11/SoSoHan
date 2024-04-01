@@ -113,7 +113,6 @@ const Join = () => {
       body: formData,
     })
       .then((response) => {
-        router.push("/");
         router.replace("/");
         return response.json();
       })

@@ -7,11 +7,11 @@ import { Dispatch, SetStateAction, useState } from "react";
 type CommentListProps = {
   commentList: CommentType[] | null;
   userPid: number | null;
-  deleteCommentHandler: (commentid: number) => void;
+  deleteHandler: (commentid: number) => void;
   editCommentHandler: (commentid: number, comment: string) => void;
 };
 
-const Form = styled.form`
+const EditForm = styled.form`
   display: flex;
   width: 100%;
   & > .edit_btn {
@@ -24,14 +24,14 @@ const Form = styled.form`
   }
 `;
 
-const Input = styled.input`
+const EditInput = styled.input`
   width: 100%;
   padding: 0.7rem 0.5rem;
   border: 1px solid #cccccc;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 `;
-const Button = styled.button`
+const EditButton = styled.button`
   width: 100px;
   color: #fff;
 `;
@@ -58,6 +58,7 @@ const WriterInfo = styled.div`
 `;
 const NickName = styled.p`
   font-weight: 700;
+  margin-right: 8px;
 `;
 const Date = styled.p`
   color: #aaa;
@@ -68,12 +69,12 @@ const Desc = styled.div`
 
 const EditCommentFrom = ({
   value,
-  setEditCommentBtn,
+  setEditBtn,
   commentId,
   editCommentHandler,
 }: {
   value: string;
-  setEditCommentBtn: Dispatch<SetStateAction<number | null | undefined>>;
+  setEditBtn: Dispatch<SetStateAction<number | null | undefined>>;
   commentId: number;
   editCommentHandler: (commentid: number, comment: string) => void;
 }) => {
@@ -81,37 +82,35 @@ const EditCommentFrom = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     editCommentHandler(commentId, comment);
-    setEditCommentBtn(null);
+    setEditBtn(null);
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Input
+    <EditForm onSubmit={handleSubmit}>
+      <EditInput
         type="text"
         value={comment}
         onChange={(e) => {
           setComment(e.target.value);
         }}
       />
-      <Button type="submit" className="edit_btn">
+      <EditButton type="submit" className="edit_btn">
         수정
-      </Button>
-      <Button onClick={() => setEditCommentBtn(null)} className="cancle_btn">
+      </EditButton>
+      <EditButton onClick={() => setEditBtn(null)} className="cancle_btn">
         취소
-      </Button>
-    </Form>
+      </EditButton>
+    </EditForm>
   );
 };
 
 const CommentList = ({
   commentList,
   userPid,
-  deleteCommentHandler,
+  deleteHandler,
   editCommentHandler,
 }: CommentListProps) => {
-  const [editCommentBtn, setEditCommentBtn] = useState<number | null>();
-
-  console.log(editCommentBtn);
+  const [editBtn, setEditBtn] = useState<number | null>();
 
   return (
     <CommentWrap>
@@ -132,11 +131,11 @@ const CommentList = ({
                     <Date>{data.regiDate.slice(0, 10)}</Date>
                   </WriterInfo>
 
-                  {editCommentBtn === data.id ? (
+                  {editBtn === data.id ? (
                     <EditCommentFrom
                       value={data.comment}
                       commentId={data.id}
-                      setEditCommentBtn={setEditCommentBtn}
+                      setEditBtn={setEditBtn}
                       editCommentHandler={editCommentHandler}
                     />
                   ) : (
@@ -145,8 +144,8 @@ const CommentList = ({
                 </div>
                 {data.writerid === userPid ? (
                   <PostMenu
-                    setEditCommentBtn={setEditCommentBtn}
-                    deleteCommentHandler={deleteCommentHandler}
+                    setEditBtn={setEditBtn}
+                    deleteHandler={deleteHandler}
                     targetId={data.id}
                   />
                 ) : (

@@ -3,10 +3,12 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { InputFormTextLabel } from "@/ui/InputForm";
 import { InputPostImage } from "@/ui/InputFile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PrimaryBtn } from "@/ui/Button";
 import { userState } from "@/recoil/atom/userState";
 import { useRecoilValue } from "recoil";
+import { useRouter } from "next/navigation";
+import { PostType } from "@/types/postType";
 
 type EditorInputType = {
   title: string;
@@ -15,11 +17,21 @@ type EditorInputType = {
   images: string[];
 };
 
-const PostEditor = () => {
+const PostEditor = ({
+  isEdit,
+  originData,
+  postPid,
+}: {
+  isEdit: boolean;
+  originData?: PostType | null | undefined;
+  postPid?: number;
+}) => {
   const [imageData, setImageData] = useState<File[] | null>();
   const [imagePriview, setImagePriview] = useState<string[] | null>();
-
   const userStates = useRecoilValue(userState);
+  const router = useRouter();
+
+  console.log(postPid);
 
   const {
     register,
@@ -56,8 +68,17 @@ const PostEditor = () => {
     }
   };
 
+  //수정 페이지 기존 데이터
+  useEffect(() => {
+    if (originData && isEdit === true) {
+      setValue("title", originData.title);
+      setValue("content", originData.content);
+      setImagePriview(originData.images);
+    }
+  }, [originData]);
+
   const onSubmit: SubmitHandler<EditorInputType> = async (data, e) => {
-    console.log(e);
+    console.log(data);
     e?.preventDefault();
     const formData = new FormData();
     formData.append("userpid", JSON.stringify(userStates.pid));
@@ -65,15 +86,37 @@ const PostEditor = () => {
     formData.append("content", data.content);
     imageData?.forEach((imageData) => formData.append("images", imageData));
 
-    await fetch("/api/posts", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
+    if (isEdit === true) {
+      await fetch(`/api/posts/${postPid}`, {
+        method: "PUT",
+        body: formData,
       })
-      .catch((error) => console.log(error));
+        .then((response) => {
+          alert("게시물이 성공적으로 수정되었습니다.");
+          router.push("/");
+          router.replace("/");
+          return response.json();
+        })
+        .catch((error) => {
+          alert("게시글 등록오류. 다시 시도해주세요.");
+          console.log(error);
+        });
+    } else if (isEdit === false) {
+      await fetch("/api/posts", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => {
+          alert("게시물이 성공적으로 등록되었습니다.");
+          router.push("/");
+          router.replace("/");
+          return response.json();
+        })
+        .catch((error) => {
+          alert("게시글 등록오류. 다시 시도해주세요.");
+          console.log(error);
+        });
+    }
   };
 
   return (

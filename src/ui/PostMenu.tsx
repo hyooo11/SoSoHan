@@ -7,8 +7,8 @@ import styled from "styled-components";
 
 type Props = {
   targetId: number;
-  setEditCommentBtn: Dispatch<SetStateAction<number | null | undefined>>;
-  deleteCommentHandler: (commentid: number) => void;
+  setEditBtn: Dispatch<SetStateAction<number | null | undefined>>;
+  deleteHandler: (commentid: number) => void;
 };
 
 const MenuWrap = styled.div`
@@ -49,11 +49,7 @@ const MenuBox = styled.div`
   }
 `;
 
-const PostMenu = ({
-  targetId,
-  setEditCommentBtn,
-  deleteCommentHandler,
-}: Props) => {
+const PostMenu = ({ targetId, setEditBtn, deleteHandler }: Props) => {
   const [postMenu, setPostMenu] = useState(false);
 
   return (
@@ -70,7 +66,7 @@ const PostMenu = ({
         <MenuBox>
           <p
             onClick={() => {
-              setEditCommentBtn(targetId);
+              setEditBtn(targetId);
               setPostMenu(false);
             }}
             className="edit_"
@@ -82,7 +78,7 @@ const PostMenu = ({
           </p>
           <p
             onClick={() => {
-              deleteCommentHandler(targetId);
+              deleteHandler(targetId);
               setPostMenu(false);
             }}
             className="del_"

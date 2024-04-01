@@ -6,25 +6,17 @@ import PostListSwiper from "@/ui/Swiper";
 import PostMenu from "@/ui/PostMenu";
 import { userState } from "@/recoil/atom/userState";
 import { useRecoilValue } from "recoil";
+import { deletePostDetail } from "@/api/postAPI";
+import { useRouter } from "next/navigation";
+import { PostType } from "@/types/postType";
 
 type PostPidProps = { postPid: number };
 
-interface PostType {
-  id: number;
-  title: string;
-  content: string;
-  regiDate: string;
-  updateDate: string;
-  writerId: number;
-  nickName: string;
-  profileImg: string;
-  images: string[];
-}
 const PostDetail = ({ postPid }: PostPidProps) => {
   const [postDetail, setPostDetail] = useState<PostType | null | undefined>();
+  const [editBtn, setEditBtn] = useState<number | null>();
   const userStates = useRecoilValue(userState);
-  console.log(userStates);
-  console.log(postDetail);
+  const router = useRouter();
 
   useEffect(() => {
     getPostDetail(postPid)
@@ -33,6 +25,24 @@ const PostDetail = ({ postPid }: PostPidProps) => {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  //게시글 수정페이지로 이동
+  useEffect(() => {
+    if (editBtn !== undefined && editBtn !== null) {
+      router.push(`/post/edit/${editBtn}`);
+    }
+  }, [editBtn]);
+
+  //게시글 삭제
+  const deleteHandler = async (postid: number) => {
+    deletePostDetail(postid)
+      .then((res) => {
+        alert("게시물이 삭제 되었습니다.");
+        router.push("/");
+        router.replace("/");
+      })
+      .catch((err) => console.log(err));
+  };
 
   if (postDetail && !postDetail.profileImg)
     postDetail.profileImg = "/media/icon/dummy_profile.png";
@@ -50,7 +60,15 @@ const PostDetail = ({ postPid }: PostPidProps) => {
                 <p className={style.nick_name}>{postDetail.nickName}</p>
                 <p className={style.date}>{postDetail.regiDate.slice(0, 10)}</p>
               </div>
-              {postDetail.writerId === userStates.pid ? <PostMenu /> : ""}
+              {postDetail.writerId === userStates.pid ? (
+                <PostMenu
+                  targetId={postDetail.id}
+                  setEditBtn={setEditBtn}
+                  deleteHandler={deleteHandler}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className={style.desc}>{postDetail.content}</div>

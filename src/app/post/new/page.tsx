@@ -11,7 +11,7 @@ const PostNewPage = () => {
         toggleBtn={true}
       />
       <div className="gloval-page">
-        <PostEditor />
+        <PostEditor isEdit={false} />
         {/* <BottomMenu /> */}
       </div>
       ;

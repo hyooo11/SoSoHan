@@ -54,7 +54,7 @@ const Comment = ({ postPid }: PostPidProps) => {
   };
 
   //댓글 삭제
-  const deleteCommentHandler = (commentid: number) => {
+  const deleteHandler = (commentid: number) => {
     editComment("DELETE", postPid, commentid)
       .then((response) => getComment())
       .catch((err) => console.log(err));
@@ -65,7 +65,7 @@ const Comment = ({ postPid }: PostPidProps) => {
       <CommentList
         commentList={commentList}
         userPid={userStates.pid}
-        deleteCommentHandler={deleteCommentHandler}
+        deleteHandler={deleteHandler}
         editCommentHandler={editCommentHandler}
       />
       <CommentForm newCommentHandler={newCommentHandler} />

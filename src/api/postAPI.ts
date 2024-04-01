@@ -16,3 +16,7 @@ export const getPostDetail = async (postPid: number) => {
   const response = await fetch(`/api/posts/${postPid}`);
   return response.json();
 };
+export const deletePostDetail = async (postPid: number) => {
+  const response = await fetch(`/api/posts/${postPid}`, { method: "DELETE" });
+  return response.json();
+};
