@@ -2,6 +2,7 @@
 import { userState, UserStateType } from "@/recoil/atom/userState";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Props = { userInfo: UserStateType };
 
@@ -48,6 +49,7 @@ const ProfileInfo = ({ userInfo }: Props) => {
               <p>{userInfo.name}</p>
             </div>
           </InfoWrap>
+          <Link href="/my/profile/edit">프로필 이미지 수정</Link>
         </PorfileInfoBox>
       )}
     </>

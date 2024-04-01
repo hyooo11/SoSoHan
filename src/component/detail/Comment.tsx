@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getCommentList, postComment } from "@/api/commentAPI";
+import { getCommentList, postComment, editComment } from "@/api/commentAPI";
 import CommentList from "@/component/detail/CommentList";
 import CommentForm from "@/component/detail/CommentForm";
 import { userState } from "@/recoil/atom/userState";
@@ -43,10 +43,31 @@ const Comment = ({ postPid }: PostPidProps) => {
       .then((response) => getComment())
       .catch((err) => console.log(err));
   };
+  //댓글 수정
+  const editCommentHandler = (commentid: number, comment: string) => {
+    const data = {
+      comment: comment,
+    };
+    editComment("PUT", postPid, commentid, data)
+      .then((response) => getComment())
+      .catch((err) => console.log(err));
+  };
+
+  //댓글 삭제
+  const deleteCommentHandler = (commentid: number) => {
+    editComment("DELETE", postPid, commentid)
+      .then((response) => getComment())
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
-      <CommentList commentList={commentList} userPid={userStates.pid} />
+      <CommentList
+        commentList={commentList}
+        userPid={userStates.pid}
+        deleteCommentHandler={deleteCommentHandler}
+        editCommentHandler={editCommentHandler}
+      />
       <CommentForm newCommentHandler={newCommentHandler} />
     </div>
   );

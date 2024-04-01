@@ -124,6 +124,7 @@ const Join = () => {
     <div className="gloval-page">
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputProfile
+          desc={true}
           priview={profilePreview}
           label={"이미지 업로드"}
           onChange={addFilesData}

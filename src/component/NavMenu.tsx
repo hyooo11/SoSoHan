@@ -1,5 +1,6 @@
 import { logout } from "@/recoil/atom/userState";
 import styled from "styled-components";
+import Link from "next/link";
 
 const NavMenuWrap = styled.ul``;
 
@@ -12,7 +13,9 @@ const NavMenu = () => {
   return (
     <div className="NavMenu">
       <NavMenuWrap>
-        <MenuItem>프로필 이미지 수정</MenuItem>
+        <MenuItem>
+          <Link href="/my/profile/edit">프로필 이미지 수정</Link>
+        </MenuItem>
         <MenuItem onClick={logout}>로그아웃</MenuItem>
       </NavMenuWrap>
     </div>

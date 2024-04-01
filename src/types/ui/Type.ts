@@ -9,6 +9,7 @@ export type PrimaryBtnType = {
 };
 
 export type InputProfileType = {
+  desc: boolean;
   priview: string | null | undefined;
   label: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

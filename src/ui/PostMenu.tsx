@@ -1,9 +1,15 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import styled from "styled-components";
+
+type Props = {
+  targetId: number;
+  setEditCommentBtn: Dispatch<SetStateAction<number | null | undefined>>;
+  deleteCommentHandler: (commentid: number) => void;
+};
 
 const MenuWrap = styled.div`
   margin-left: auto;
@@ -43,7 +49,11 @@ const MenuBox = styled.div`
   }
 `;
 
-const PostMenu = () => {
+const PostMenu = ({
+  targetId,
+  setEditCommentBtn,
+  deleteCommentHandler,
+}: Props) => {
   const [postMenu, setPostMenu] = useState(false);
 
   return (
@@ -58,13 +68,25 @@ const PostMenu = () => {
 
       {postMenu ? (
         <MenuBox>
-          <p className="edit_">
+          <p
+            onClick={() => {
+              setEditCommentBtn(targetId);
+              setPostMenu(false);
+            }}
+            className="edit_"
+          >
             <span className="icon">
               <FaEdit />
             </span>
             <span className="txt">수정하기</span>
           </p>
-          <p className="del_">
+          <p
+            onClick={() => {
+              deleteCommentHandler(targetId);
+              setPostMenu(false);
+            }}
+            className="del_"
+          >
             <span className="icon">
               <RiDeleteBinLine />
             </span>

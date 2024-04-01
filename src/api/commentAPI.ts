@@ -22,3 +22,18 @@ export const postComment = async (
   });
   return response.json();
 };
+export const editComment = async (
+  method: string,
+  postid: number,
+  commentid: number,
+  data?: { comment: string }
+) => {
+  const response = await fetch(`/api/posts/${postid}/comments/${commentid}`, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
