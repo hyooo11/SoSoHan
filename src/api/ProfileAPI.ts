@@ -1,10 +1,7 @@
-export const editProfile = async () => {
+export const editProfile = async (formData: FormData) => {
   const response = await fetch("/api/account/image-update", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // body: JSON.stringify(dataInfo),
+    method: "PUT",
+    body: formData,
   });
   return response.json();
 };
