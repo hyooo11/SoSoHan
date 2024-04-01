@@ -12,7 +12,7 @@ const MyProfilePage = () => {
 
   return (
     <>
-      <Header backBtn={true} />
+      <Header logoBtn={true} backBtn={true} toggleBtn={true} />
       <div className="gloval-page">
         <ProfileInfo userInfo={userInfo} />
         <PostList userInfo={userInfo} />

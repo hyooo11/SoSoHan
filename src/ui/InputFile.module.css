@@ -4,9 +4,11 @@
 }
 .InputProfile .tit_box {
   text-align: center;
+  padding-bottom: 0.5rem;
 }
 .InputProfile .tit_box p {
   font-size: 1.5rem;
+  padding-bottom: 0.4rem;
 }
 .InputProfile .tit_box span {
   font-size: 1rem;

@@ -5,7 +5,7 @@ import Header from "@/component/Header";
 export default function Home() {
   return (
     <>
-      <Header backBtn={false} />
+      <Header logoBtn={true} backBtn={false} toggleBtn={true} />
       {/* <div className="gloval-page"> */}
       <PostList />
       <BottomMenu />

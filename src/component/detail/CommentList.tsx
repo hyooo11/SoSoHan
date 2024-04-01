@@ -34,10 +34,13 @@ const Desc = styled.div`
   padding-top: 5px;
 `;
 const CommentList = ({ commentList }: CommentListProps) => {
+  console.log(commentList);
+
   return (
     <CommentWrap>
       {commentList &&
         commentList.map((data, _) => {
+          if (data.message) return;
           if (!data.profileImg)
             data.profileImg = "/media/icon/dummy_profile.png";
           return (

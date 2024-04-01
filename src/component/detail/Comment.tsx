@@ -16,11 +16,13 @@ export interface CommentType {
   regiDate: string;
   nickName: string;
   profileImg: string;
+  message: string;
 }
 
 const Comment = ({ postPid }: PostPidProps) => {
   const [commentList, setCommentList] = useState<CommentType[] | null>([]);
   const userStates = useRecoilValue(userState);
+  console.log(userStates);
   //댓글 리스트 함수
   const getComment = () => {
     getCommentList(postPid)

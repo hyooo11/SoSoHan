@@ -8,6 +8,7 @@ import { InputProfile } from "@/ui/InputFile";
 import { PrimaryBtn } from "@/ui/Button";
 import { ValidateForm } from "@/util/Validator";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type JoinInputType = {
   name: string;
@@ -74,6 +75,7 @@ const schema = yup.object().shape({
 const Join = () => {
   const [profileData, setProfileDate] = useState<File | null>();
   const [profilePreview, setProfilePreview] = useState<string | null>();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -96,7 +98,6 @@ const Join = () => {
   };
 
   const onSubmit: SubmitHandler<JoinInputType> = async (data) => {
-    console.log(data);
     const formData = new FormData();
     if (profileData) {
       formData.append("profileImg", profileData);
@@ -112,14 +113,15 @@ const Join = () => {
       body: formData,
     })
       .then((response) => {
+        router.push("/");
+        router.replace("/");
         return response.json();
       })
       .catch((error) => console.log(error));
   };
 
   return (
-    <div>
-      <h2>이메일로 회원가입</h2>
+    <div className="gloval-page">
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputProfile
           priview={profilePreview}

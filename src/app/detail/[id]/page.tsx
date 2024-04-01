@@ -6,7 +6,7 @@ const postDetailPage = ({ params }: { params: { id: number } }) => {
   const postPid = params.id;
   return (
     <>
-      <Header backBtn={true} />
+      <Header logoBtn={true} backBtn={true} toggleBtn={true} />
       <div className="gloval-page">
         <PostDetail postPid={postPid} />
         <Comment postPid={postPid} />
