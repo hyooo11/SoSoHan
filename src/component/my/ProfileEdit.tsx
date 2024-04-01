@@ -43,7 +43,6 @@ const ProfileEdit = () => {
     await editProfile(formData)
       .then((res) => {
         alert("프로필 수정 완료입니다!");
-        router.push("/");
         router.replace("/");
         return res.json();
       })

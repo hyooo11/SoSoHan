@@ -17,6 +17,7 @@ const MyProfilePage = () => {
         backBtn={true}
         toggleBtn={true}
       />
+
       <div className="gloval-page">
         <ProfileInfo userInfo={userInfo} />
         <PostList userInfo={userInfo} />
