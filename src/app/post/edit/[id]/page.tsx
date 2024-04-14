@@ -26,7 +26,6 @@ const PostEdiePage = ({ params }: { params: { id: number } }) => {
       <div className="gloval-page">
         <PostEditor isEdit={true} originData={originData} postPid={postPid} />
       </div>
-      ;
     </>
   );
 };

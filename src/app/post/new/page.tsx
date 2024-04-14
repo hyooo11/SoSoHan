@@ -14,7 +14,6 @@ const PostNewPage = () => {
         <PostEditor isEdit={false} />
         {/* <BottomMenu /> */}
       </div>
-      ;
     </>
   );
 };
