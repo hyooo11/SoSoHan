@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import RecoilRootProvider from "@/recoil/recoilRootProvider";
-
 import LoginCheck from "@/util/LoginCheck";
+import SetScreenHeight from "@/util/SetScreenHeight";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +20,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <div className="gloval-wrap">
+        <SetScreenHeight>
           <RecoilRootProvider>
             <LoginCheck />
             {children}
           </RecoilRootProvider>
-        </div>
+        </SetScreenHeight>
       </body>
     </html>
   );

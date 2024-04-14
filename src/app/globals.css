@@ -136,8 +136,8 @@ figcaption {
   word-break: keep-all;
 }
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0px;
+  height: 0px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #e2e2e2;
@@ -163,7 +163,7 @@ figcaption {
 }
 @media (max-width: 650px) {
   .gloval-wrap {
-    width: 90vw;
+    width: 100vw;
   }
 }
 
@@ -171,7 +171,7 @@ figcaption {
   position: relative;
   background-color: #f6f4f2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .gloval-page {
   padding: 1.7rem 1rem 0;
