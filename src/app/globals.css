@@ -197,6 +197,17 @@ figcaption {
   font-size: 1.2rem;
   font-weight: 700;
 }
+.Header .back_btn {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Header .back_btn svg {
+  width: 25px;
+  height: 25px;
+  color: #7d898b;
+}
 .Header .nav_btn_area {
   display: flex;
 }

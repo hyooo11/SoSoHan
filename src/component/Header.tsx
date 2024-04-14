@@ -34,7 +34,7 @@ const Header = ({
         )}
 
         {backBtn ? (
-          <button onClick={() => router.back()}>
+          <button onClick={() => router.back()} className="back_btn">
             <IoChevronBack />
           </button>
         ) : (
