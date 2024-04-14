@@ -174,10 +174,11 @@ figcaption {
   /* height: 100vh; */
 }
 .gloval-page {
+  width: 100%;
   padding: 1.7rem 1rem 0;
   overflow-x: hidden;
   overflow-y: auto;
-  height: calc(100% - 100px);
+  height: calc(100% - 110px);
   margin-bottom: 50px;
 }
 
@@ -246,7 +247,7 @@ figcaption {
 .BottomMenu {
   position: absolute;
   bottom: 0;
-  height: 50px;
+  height: 60px;
   background-color: #fff;
   z-index: 3;
   left: 0;
